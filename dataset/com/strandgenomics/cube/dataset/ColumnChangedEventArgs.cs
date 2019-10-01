@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace dataset
+namespace com.strandgenomics.cube.dataset
 {
     public class ColumnChangedEventArgs : EventArgs
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dataset
+namespace com.strandgenomics.cube.dataset
 {
     public sealed class IntColumn:AbstractRegularColumn
     {

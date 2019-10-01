@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using framework;
 
-namespace dataset
+namespace com.strandgenomics.cube.dataset
 {
     //omitted the event multicasters and add and remove listeners since they are not needed.
 

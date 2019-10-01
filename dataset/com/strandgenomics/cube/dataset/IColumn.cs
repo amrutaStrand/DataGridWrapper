@@ -1,6 +1,6 @@
 ﻿using framework;
 using System;
-namespace dataset
+namespace com.strandgenomics.cube.dataset
 {
     /// <summary>
     /// moved constants from java interface in DatasetConstants so use it for any constants you may need. i.e.

@@ -1,6 +1,6 @@
 ﻿using framework;
 using System;
-namespace dataset
+namespace com.strandgenomics.cube.dataset
 {
 
     public interface IDataset

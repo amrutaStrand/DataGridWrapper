@@ -1,4 +1,4 @@
-﻿namespace dataset
+﻿namespace com.strandgenomics.cube.dataset
 {
     public interface IDataChanged
     {

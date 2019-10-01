@@ -1,6 +1,6 @@
 ﻿using System;
 using framework;
-namespace dataset
+namespace com.strandgenomics.cube.dataset
 {
     //changed name since DatachangedEvent in java is actually EventArgs in c#.
     public class DataChangedEventArgs : EventArgs

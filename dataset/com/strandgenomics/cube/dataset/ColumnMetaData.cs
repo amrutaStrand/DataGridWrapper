@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace dataset
+namespace com.strandgenomics.cube.dataset
 {
     public class ColumnMetaData
     {
