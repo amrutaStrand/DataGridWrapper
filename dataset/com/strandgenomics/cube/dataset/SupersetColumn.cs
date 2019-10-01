@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using framework;
 
-namespace dataset
+namespace com.strandgenomics.cube.dataset
 {
     public sealed class SupersetColumn: AbstractColumn
     {

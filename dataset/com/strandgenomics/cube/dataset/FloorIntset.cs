@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace dataset
+namespace com.strandgenomics.cube.dataset
 {
     /// <summary>
     /// this is helper class for AbstractRegularColumn.GetRowIndicesInRange().

@@ -1,5 +1,5 @@
 ﻿using System;
-namespace dataset
+namespace com.strandgenomics.cube.dataset
 
 {
     public class ColumnOperationUtil 
