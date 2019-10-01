@@ -6,15 +6,16 @@ using System.Threading.Tasks;
 
 namespace dataset
 {
-    public const String DATATYPE_STRING	= StringColumn.DATATYPE;
-    public const String DATATYPE_FLOAT 	= FloatColumn.DATATYPE;
-    public const String DATATYPE_INT 	= IntColumn.DATATYPE;
-    public const String DATATYPE_DATE	= DateColumn.DATATYPE;
-    public const String DATATYPE_BIT	= BitColumn.DATATYPE;
-    public const String DATATYPE_OBJECT 	= ObjectColumn.DATATYPE;
-    public const String DATATYPE_ENUM    = EnumColumn.DATATYPE;
-    class ColumnFactory
+    
+    public class ColumnFactory
     {
+        public static String DATATYPE_STRING = StringColumn.DATATYPE;
+        public static String DATATYPE_FLOAT = FloatColumn.DATATYPE;
+        public static String DATATYPE_INT = IntColumn.DATATYPE;
+        //public const String DATATYPE_DATE = DateColumn.DATATYPE;
+        //public const String DATATYPE_BIT	= BitColumn.DATATYPE;
+        //public const String DATATYPE_OBJECT 	= ObjectColumn.DATATYPE;
+        //public const String DATATYPE_ENUM    = EnumColumn.DATATYPE;
         internal static object GetComparableMin(AbstractRegularColumn abstractRegularColumn, float min)
         {
             throw new NotImplementedException();

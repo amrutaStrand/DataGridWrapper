@@ -8,9 +8,9 @@ namespace dataset
 {
     public sealed class FloatColumn : AbstractRegularColumn
     {
-        private readonly string fORMAT_ID = "cube.dataset.FloatColumn";
+        private static string fORMAT_ID = "cube.dataset.FloatColumn";
     
-        private readonly string dATATYPE = "float";
+        private static string dATATYPE = "float";
 
         /// <summary>
         /// raw data associtated with column.
@@ -30,9 +30,9 @@ namespace dataset
             this.data = data;
         }
 
-        public string FORMAT_ID => fORMAT_ID;
+        public static string FORMAT_ID => fORMAT_ID;
 
-        public string DATATYPE => dATATYPE;
+        public static string DATATYPE => dATATYPE;
 
         public override object Get(int index)
         {
