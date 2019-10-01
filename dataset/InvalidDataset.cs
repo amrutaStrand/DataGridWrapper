@@ -60,6 +60,11 @@ namespace dataset
             throw new NotImplementedException();
         }
 
+        public int GetColumnCount()
+        {
+            throw new NotImplementedException();
+        }
+
         public string GetColumnName(int index)
         {
             throw new NotImplementedException();
@@ -96,6 +101,11 @@ namespace dataset
         }
 
         public IntSet getRowIndicesInSortedOrder(string columnName, bool isAscending)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IntSet GetRowIndicesInSortedOrder(string columnName, bool isAscending)
         {
             throw new NotImplementedException();
         }

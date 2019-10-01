@@ -31,11 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="fastest">
-      <HintPath>..\..\..\fastest\trunk\fastest\bin\Debug\fastest.dll</HintPath>
-    </Reference>
-    <Reference Include="framework">
-      <HintPath>..\..\..\framework\trunk\framework\bin\Debug\framework.dll</HintPath>
+    <Reference Include="framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\cube-framework\framework\bin\Debug\framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

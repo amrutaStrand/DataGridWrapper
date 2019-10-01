@@ -10,13 +10,13 @@ namespace dataset
 {
     public sealed class StringColumn : AbstractRegularColumn
     {
-        private readonly string fORMAT_ID = "cube.dataset.StringColumn";
+        private const string fORMAT_ID = "cube.dataset.StringColumn";
     
-        private readonly string dATATYPE = "string";
+        private const string dATATYPE = "string";
 
-        public string FORMAT_ID => fORMAT_ID;
+        public static string FORMAT_ID => fORMAT_ID;
 
-        public string DATATYPE => dATATYPE;
+        public static string DATATYPE => dATATYPE;
 
         public Comparator Comparator { get; private set; }
 
@@ -25,7 +25,7 @@ namespace dataset
         private bool deleteOriginalData;
 
         /**
- * calls StringColumn with size = data.length
+  * calls StringColumn with size = data.length
  */
         public StringColumn(String name, char[][] data): this(name, data, data.Length)
         {

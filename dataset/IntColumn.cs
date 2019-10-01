@@ -9,18 +9,18 @@ namespace dataset
 {
     public sealed class IntColumn:AbstractRegularColumn
     {
-        private  readonly string fORMAT_ID = "cube.dataset.IntColumn";
+        private  static string fORMAT_ID = "cube.dataset.IntColumn";
     
-        private readonly string dATATYPE = "integer";
+        private static string dATATYPE = "integer";
 
         /// <summary>
         /// the raw data associated with the column.
         /// </summary>
         private int[] data;
 
-        public string FORMAT_ID => fORMAT_ID;
+        public static string FORMAT_ID => fORMAT_ID;
 
-        public string DATATYPE => dATATYPE;
+        public static string DATATYPE => dATATYPE;
 
         public IntColumn(string name, int[] data): base(name,data.Length)
         {
