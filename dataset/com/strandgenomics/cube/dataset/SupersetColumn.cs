@@ -12,6 +12,7 @@ namespace com.strandgenomics.cube.dataset
         public static string FORMAT_ID = "cube.dataset.SupersetColumn";
         private int size;
         public IColumn orgColumn;
+        //#framework
         private /*IndexedIntArray*/ int[] dataIndices;
         private bool stateNeedsUpdate;
 
