@@ -68,6 +68,7 @@
     <Compile Include="com\strandgenomics\cube\dataset\IntSetInstantiable.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\InvalidDataset.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\NullColumn.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\ObjectColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ProxyColumn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\RowIndicesIntSet.cs" />
