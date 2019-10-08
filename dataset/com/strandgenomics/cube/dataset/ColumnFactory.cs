@@ -9,13 +9,13 @@ namespace com.strandgenomics.cube.dataset
     
     public class ColumnFactory
     {
-        public static String DATATYPE_STRING = StringColumn.DATATYPE;
-        public static String DATATYPE_FLOAT = FloatColumn.DATATYPE;
-        public static String DATATYPE_INT = IntColumn.DATATYPE;
-        //public const String DATATYPE_DATE = DateColumn.DATATYPE;
-        //public const String DATATYPE_BIT	= BitColumn.DATATYPE;
-        //public const String DATATYPE_OBJECT 	= ObjectColumn.DATATYPE;
-        //public const String DATATYPE_ENUM    = EnumColumn.DATATYPE;
+        public static string DATATYPE_STRING = StringColumn.DATATYPE;
+        public static string DATATYPE_FLOAT = FloatColumn.DATATYPE;
+        public static string DATATYPE_INT = IntColumn.DATATYPE;
+        //public const string DATATYPE_DATE = DateColumn.DATATYPE;
+        //public const string DATATYPE_BIT = BitColumn.DATATYPE;
+        public static string DATATYPE_OBJECT = ObjectColumn.DATATYPE;
+        //public const string DATATYPE_ENUM = EnumColumn.DATATYPE;
         internal static object GetComparableMin(AbstractRegularColumn abstractRegularColumn, float min)
         {
             throw new NotImplementedException();
