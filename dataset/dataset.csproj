@@ -48,6 +48,7 @@
     <Compile Include="com\strandgenomics\cube\dataset\AbstractColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\AbstractLazyColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\AbstractRegularColumn.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\BitColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnChangedEventArgs.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnFactory.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnMetaData.cs" />
