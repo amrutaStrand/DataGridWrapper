@@ -57,6 +57,7 @@
     <Compile Include="com\strandgenomics\cube\dataset\DataException.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\DatasetConstants.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\DatasetUtil.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\DateColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\EnumColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\FloatColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\FloorIntset.cs" />
