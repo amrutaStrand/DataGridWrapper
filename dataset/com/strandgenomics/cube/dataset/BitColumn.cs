@@ -10,7 +10,7 @@ namespace com.strandgenomics.cube.dataset
     {
         public static string FORMAT_ID = "cube.dataset.BitColumn";
     
-        static string DATATYPE = "bitset";
+        public static string DATATYPE = "bitset";
 
         private BitArray data;
 

@@ -8,7 +8,7 @@ namespace com.strandgenomics.cube.dataset
 
         public static string FORMAT_ID = "cube.dataset.EnumColumn";
     
-        static string DATATYPE = "enum";
+        public static string DATATYPE = "enum";
 
         float totalSum = -1.0f;
 

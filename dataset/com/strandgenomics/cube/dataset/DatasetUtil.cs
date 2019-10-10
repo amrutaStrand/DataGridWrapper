@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections;
 
 namespace com.strandgenomics.cube.dataset
 {
     public class DatasetUtil
     {
-        public static bool isFloatColumn(IColumn c)
+        public static bool IsFloatColumn(IColumn c)
         {
             return c.GetDatatype().Equals(ColumnFactory.DATATYPE_FLOAT);
         }
@@ -13,7 +14,7 @@ namespace com.strandgenomics.cube.dataset
             return c.GetDatatype().Equals(ColumnFactory.DATATYPE_INT);
         }
 
-        internal static System.Collections.Generic.List<object> GetColumnDataAsList(IColumn column)
+        internal static ArrayList GetColumnDataAsList(IColumn column)
         {
             throw new NotImplementedException();
         }
