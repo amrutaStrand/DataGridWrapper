@@ -7,19 +7,24 @@ namespace com.strandgenomics.cube.dataset
         protected const float FLOAT_MV = DatasetConstants.FLOAT_MV;
         protected const int INT_MV = DatasetConstants.INTEGER_MV;
         
-        protected static bool isNumericColumn(IColumn c)
+        protected static bool IsNumericColumn(IColumn c)
         {
-            return DatasetUtil.isFloatColumn(c) || DatasetUtil.isIntegerColumn(c);
+            return DatasetUtil.IsFloatColumn(c) || DatasetUtil.isIntegerColumn(c);
         }
 
-        protected static float toFloat(Object o)
+        protected static float ToFloat(Object o)
         {
             return (float) o;
         }
 
-        protected static int toInt(Object o)
+        protected static int ToInt(Object o)
         {
             return (int) o;
+        }
+
+        internal static void UpdateMetaData(IColumn clone, IColumn column)
+        {
+            throw new NotImplementedException();
         }
 
 

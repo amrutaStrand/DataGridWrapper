@@ -11,7 +11,7 @@ namespace com.strandgenomics.cube.dataset
 
         public static string FORMAT_ID = "cube.dataset.DateColumn";
 
-        static string DATATYPE = "date";
+        public static string DATATYPE = "date";
 
         /// <summary>
         /// the raw data associated with the column.

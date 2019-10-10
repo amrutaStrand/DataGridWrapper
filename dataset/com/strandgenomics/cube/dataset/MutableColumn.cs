@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,7 +10,7 @@ namespace com.strandgenomics.cube.dataset
     public class MutableColumn : AbstractRegularColumn, IMutableColumn
     {
         //still needs reviewing.
-        protected List<object> data;
+        protected ArrayList data;
         protected string categorytype;
         protected Dictionary<object,object> userData;
         protected string _datatype = ColumnFactory.DATATYPE_INT;
@@ -32,17 +33,17 @@ namespace com.strandgenomics.cube.dataset
             
         }
 
-        public MutableColumn(string name, string datatype):this(name, datatype, new List<object>() /*new ArrayList()*/)
+        public MutableColumn(string name, string datatype):this(name, datatype,  new ArrayList())
         {
             
         }
 
-        public MutableColumn(string name, List<object> data): this(name, GetDatatypeForList(ColumnFactory.DATATYPE_INT, data), data)
+        public MutableColumn(string name, ArrayList data): this(name, GetDatatypeForList(ColumnFactory.DATATYPE_INT, data), data)
         {
             
         }
 
-        public MutableColumn(string name, string datatype, List<object> list):base(name, list.Count)
+        public MutableColumn(string name, string datatype, ArrayList list):base(name, list.Count)
         {
             
             _datatype = datatype;
@@ -73,7 +74,7 @@ namespace com.strandgenomics.cube.dataset
 
         // TO BE MOVED TO DATASETUTIL
         // chks the datatype of each element in the list against - ColumnFactory.DATATYPE_(OBJECT, STRING, INT, FLOAT, DATE)
-        private static string GetDatatypeForList(string datatype, List<object> list)
+        private static string GetDatatypeForList(string datatype, ArrayList list)
         {
 
             String type = null;
