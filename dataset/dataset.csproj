@@ -53,10 +53,12 @@
     <Compile Include="com\strandgenomics\cube\dataset\ColumnChangedEventArgs.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnFactory.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnMetaData.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\ColumnOperations.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnOperationUtil.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\DataChangedEventArgs.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\DataException.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\DatasetConstants.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\DatasetFactory.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\DatasetUtil.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\DateColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\EnumColumn.cs" />
