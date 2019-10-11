@@ -9,7 +9,7 @@ namespace com.strandgenomics.cube.dataset
         {
             return c.GetDatatype().Equals(ColumnFactory.DATATYPE_FLOAT);
         }
-        public static bool isIntegerColumn(IColumn c)
+        public static bool IsIntegerColumn(IColumn c)
         {
             return c.GetDatatype().Equals(ColumnFactory.DATATYPE_INT);
         }

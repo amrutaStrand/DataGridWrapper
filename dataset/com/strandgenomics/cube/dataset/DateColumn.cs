@@ -18,7 +18,7 @@ namespace com.strandgenomics.cube.dataset
         /// </summary>
         private long[] data;
 
-        public DateColumn(String name, long[] data): this(name, data, data.Length)
+        public DateColumn(string name, long[] data): this(name, data, data.Length)
         {
             
         }
