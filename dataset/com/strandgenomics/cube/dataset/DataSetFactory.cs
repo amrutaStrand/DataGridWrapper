@@ -8,7 +8,7 @@ namespace com.strandgenomics.cube.dataset
 {
     public class DatasetFactory
     {
-        internal static object CreateDataset(string v, IColumn[] cols)
+        internal static IDataset CreateDataset(string v, IColumn[] cols)
         {
             throw new NotImplementedException();
         }

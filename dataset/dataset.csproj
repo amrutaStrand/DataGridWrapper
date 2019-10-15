@@ -78,6 +78,10 @@
     <Compile Include="com\strandgenomics\cube\dataset\NullColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ObjectColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ProxyColumn.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\util\ColumnConverter.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\util\TextParser.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\util\UpgradeableColumn.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\util\UpgradeableMutableColumn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\RowIndicesIntSet.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\StringColumn.cs" />
