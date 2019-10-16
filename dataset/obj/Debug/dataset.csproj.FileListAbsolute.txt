@@ -29,3 +29,9 @@ E:\gitlab repos\cube-dataset\dataset\bin\Debug\dataset.pdb
 E:\gitlab repos\cube-dataset\dataset\bin\Debug\framework.pdb
 E:\gitlab repos\cube-dataset\dataset\obj\Debug\dataset.csproj.CopyComplete
 E:\gitlab repos\cube-dataset\dataset\bin\Debug\framework.dll
+E:\gitlab repos\cube-dataset\dataset\bin\Debug\ICSharpCode.SharpZipLib.dll
+E:\gitlab repos\cube-dataset\dataset\bin\Debug\NPOI.dll
+E:\gitlab repos\cube-dataset\dataset\bin\Debug\NPOI.OOXML.dll
+E:\gitlab repos\cube-dataset\dataset\bin\Debug\NPOI.OpenXml4Net.dll
+E:\gitlab repos\cube-dataset\dataset\bin\Debug\NPOI.OpenXmlFormats.dll
+E:\gitlab repos\cube-dataset\dataset\bin\Debug\ICSharpCode.SharpZipLib.xml

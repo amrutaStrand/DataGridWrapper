@@ -35,6 +35,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\cube-framework\framework\bin\Debug\framework.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=1.0.0.999, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.1.0.0\lib\net45\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.4.1.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.4.1\lib\net45\NPOI.OpenXmlFormats.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -82,12 +97,16 @@
     <Compile Include="com\strandgenomics\cube\dataset\util\TextParser.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\util\UpgradeableColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\util\UpgradeableMutableColumn.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\util\XLSParser.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\util\XLSXParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\RowIndicesIntSet.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\StringColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\SubsetColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\SupersetColumn.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
