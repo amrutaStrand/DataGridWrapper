@@ -94,7 +94,9 @@
     <Compile Include="com\strandgenomics\cube\dataset\ObjectColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ProxyColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\util\ColumnConverter.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\util\PreviewXLSParser.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\util\TextParser.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\util\TypeParser.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\util\UpgradeableColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\util\UpgradeableMutableColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\util\XLSParser.cs" />

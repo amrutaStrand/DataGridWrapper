@@ -462,7 +462,7 @@ namespace com.strandgenomics.cube.dataset.util
         /// Open the workbook and sheet and set initial variables like
         /// the number of rows, columns, and first non-empty row, column.
         /// </summary>
-        public void OpenReader()
+        virtual public void OpenReader()
         {
 
             if (file == null)
