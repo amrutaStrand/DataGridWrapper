@@ -12,5 +12,10 @@ namespace com.strandgenomics.cube.dataset
         {
             throw new NotImplementedException();
         }
+
+        internal static IDataset CreateDataset(string name, IColumn[] cols, int length)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
