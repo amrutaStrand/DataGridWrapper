@@ -45,6 +45,7 @@
     <Compile Include="com\strandgenomics\cube\dataset\BitColumnTests.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnOperationsTests.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnOperationUtilTests.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\DateColumnTests.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\NullColumnTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
