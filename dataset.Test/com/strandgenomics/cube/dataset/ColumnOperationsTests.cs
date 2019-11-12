@@ -1,5 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using DeepEqual.Syntax;
+﻿using dataset.Test.com.strandgenomics.cube.dataset;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace com.strandgenomics.cube.dataset.Tests
 {
@@ -20,7 +20,7 @@ namespace com.strandgenomics.cube.dataset.Tests
             //Act
             IColumn expected = ColumnOperations.Log(iCol, 2f, "logCol");
             //Assert
-            bool expectedFlag = actual.IsDeepEqual(expected);
+            bool expectedFlag = TestUtils.IsDeepEqual(actual, expected);
             Assert.IsTrue(expectedFlag);
         }
 
@@ -39,7 +39,7 @@ namespace com.strandgenomics.cube.dataset.Tests
             //Act
             IColumn expected = ColumnOperations.Exponent(iCol, 2f, "expCol");
             //Assert
-            bool expectedFlag = actual.IsDeepEqual(expected);
+            bool expectedFlag = TestUtils.IsDeepEqual(actual, expected);
             Assert.IsTrue(expectedFlag);
         }
 
@@ -243,17 +243,7 @@ namespace com.strandgenomics.cube.dataset.Tests
 
         }
 
-        //private bool IsDeepEqual(IColumn actual, IColumn expected)
-        //{
-        //    for(int i=0; i<actual.GetSize(); i++)
-        //    {
-        //        var at = actual.Get(i);
-        //        var et = expected.Get(i);
-        //        if (!at.ToString().Equals(et.ToString()))
-        //            return false;
-        //    }
-        //    return true;
-        //}
+       
 
         //[TestMethod]
         //public void GetMedian_PrivateMethod()

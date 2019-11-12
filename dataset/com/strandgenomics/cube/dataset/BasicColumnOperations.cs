@@ -19,8 +19,7 @@ namespace com.strandgenomics.cube.dataset
                 name = a.GetName() + " + " + b.GetName();
 
             if (!IsNumericColumn(a) || !IsNumericColumn(b))
-                throw new Exception(
-                "+ operation can be performed only on int and float columns.");
+                throw new Exception("operation can be performed only on int and float columns.");
 
             if (DatasetUtil.IsFloatColumn(a) || DatasetUtil.IsFloatColumn(b))
             {
@@ -49,8 +48,8 @@ namespace com.strandgenomics.cube.dataset
             if (!((b is int)|| (b is float) || (b is double)))
                 throw new Exception(
                 "+ operation can be performed only with numbers.");
-
-            if (DatasetUtil.IsFloatColumn(a) || b is float || b is double)
+            
+            if (DatasetUtil.IsFloatColumn(a) && (b is float || b is double))
             {
                 float[] data = Add_float(a, ToFloat(b), name);
                 return CreateFloatColumn(name, data, a);
@@ -179,7 +178,7 @@ namespace com.strandgenomics.cube.dataset
                 throw new Exception(
                 "- operation can be performed only with numbers.");
 
-            if (DatasetUtil.IsFloatColumn(a) || b is float || b is double)
+            if (DatasetUtil.IsFloatColumn(a) && (b is float || b is double))
             {
                 float[] data = Sub_float(a, ToFloat(b), name);
                 return CreateFloatColumn(name, data, a);
@@ -309,7 +308,7 @@ namespace com.strandgenomics.cube.dataset
                 throw new Exception(
                 "* operation can be performed only with numbers.");
 
-            if (DatasetUtil.IsFloatColumn(a) || b is float || b is double)
+            if (DatasetUtil.IsFloatColumn(a) && (b is float || b is double))
             {
                 float[] data = Mul_float(a, ToFloat(b), name);
                 return CreateFloatColumn(name, data, a);
@@ -440,7 +439,7 @@ namespace com.strandgenomics.cube.dataset
                 throw new Exception(
                 "/ operation can be performed only with numbers.");
 
-            if (DatasetUtil.IsFloatColumn(a) || b is float || b is double)
+            if (DatasetUtil.IsFloatColumn(a) && (b is float || b is double))
             {
                 float[] data = Div_float(a, ToFloat(b), name);
                 return CreateFloatColumn(name, data, a);
