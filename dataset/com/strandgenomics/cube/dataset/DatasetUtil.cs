@@ -20,7 +20,7 @@ namespace com.strandgenomics.cube.dataset
         public static /*IntArray*/int[] GetContinuousColumnIndices(IDataset dataset) //#framework
         {
             int colCount = dataset.GetColumnCount();
-
+            
             int[] indices = new int[colCount]; //#framework
 
             for (int i = 0; i < colCount; i++)
@@ -28,7 +28,7 @@ namespace com.strandgenomics.cube.dataset
                 if (!dataset.GetColumn(i).IsCategorical())
                     indices[i] = 1;
             }
-
+            
             return indices;
         }
 
@@ -1232,6 +1232,7 @@ namespace com.strandgenomics.cube.dataset
             pw.Flush();
         }
 
+        //#framework
         ///// <summary>
         ///// Creates a MultiIndexedIntArray using the category information of 
         ///// the specified column.
@@ -1243,10 +1244,280 @@ namespace com.strandgenomics.cube.dataset
         //    return new CategoricalState(column);
         //}
 
+        //#framework
+        ///// <summary>
+        ///// searches for multiple occurences of ids from searchFor in searchIn. 
+        ///// Typical use case is expanding compressed transcriptID column to exon level 
+        ///// transcript id column
+        ///// </summary>
+        ///// <param name="searchFor"></param>
+        ///// <param name="searchIn"></param>
+        ///// <returns></returns>
+        //public static IndexedIntArray getMatchingRowIndices(IColumn searchFor, IColumn searchIn)
+        //{
+        //    DefaultIntArray indices = new DefaultIntArray(searchFor.getSize());
 
+
+        //    if (searchIn == null || searchIn.getSize() == 0 || searchFor == null || searchFor.getSize() == 0)
+        //        return null;
+        //    int forSize = searchFor.getSize();
+        //    int inSize = searchIn.getSize();
+
+
+        //    IntIterator forIterator = searchFor.getRowIndicesInSortedOrder(true).iterator();
+        //    IntIterator inIterator = searchIn.getRowIndicesInSortedOrder(true).iterator();
+
+        //    int forIndex = forIterator.next();
+        //    int inIndex = inIterator.next();
+        //    Comparable forComparable = searchFor.getComparable(forIndex);
+        //    Comparable inComparable = searchIn.getComparable(inIndex);
+
+        //    while (true)
+        //    {
+
+        //        if (forComparable == null || inComparable == null)
+        //            break;
+
+        //        int value = forComparable.compareTo(inComparable);
+        //        if (value == 0)
+        //        {
+        //            indices.add(inIndex);
+        //        }
+        //        if (value < 0)
+        //        {
+        //            if (!forIterator.hasNext())
+        //                break;
+        //            forIndex = forIterator.next();
+        //            forComparable = searchFor.getComparable(forIndex);
+        //        }
+        //        else
+        //        {
+        //            if (!inIterator.hasNext())
+        //                break;
+        //            inIndex = inIterator.next();
+        //            inComparable = searchIn.getComparable(inIndex);
+        //        }
+
+        //    }
+        //    if (indices.getSize() == 0)
+        //        return null;
+
+        //    return ArrayUtil.createIndexedIntArray(indices);
+        //}
+
+        /// <summary>
+        /// Collapses given categorical column in a categorical column with unique category values.
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns>SubsetColumn</returns>
+        public static IColumn GetUniqueCategoryColumn(IColumn c)
+        {
+            if (!c.IsCategorical())
+                throw new Exception("Given column is not categorical");
+            //#framework
+            //DefaultIntArray indices = new DefaultIntArray();
+            int[] indices = new int[0];
+            int size = c.GetCategoryCount();
+            for (int i = 0; i < size; i++)
+            {
+                indices.Append(c.GetRowIndicesOfCategory(i).GetEnumerator().Current);
+                c.GetRowIndicesOfCategory(i).GetEnumerator().MoveNext();
+            }
+
+            //IndexedIntArray rowIndices = ArrayUtil.createIndexedIntArray(indices);
+            int[] rowIndices = indices;
+            return ColumnFactory.CreateSubsetColumn(c, rowIndices);
+        }
+
+
+        public static bool ApproxEquals(IDataset d1, IDataset d2, float delta)
+        { // {{{
+
+            return true
+                && d1.GetColumnCount() == d1.GetColumnCount()
+                && d1.GetRowCount() == d2.GetRowCount()
+                && d1.GetName().Equals(d2.GetName())
+                && CompareColumns(d1, d2, delta)
+                ;
+        }
+
+        private static bool CompareColumns(IDataset d1, IDataset d2, float delta)
+        {
+            int colCount = d1.GetColumnCount();
+
+            if (delta < 0)
+                delta = -delta;
+
+            for (int i = 0; i < colCount; i++)
+            {
+                IColumn c1 = d1.GetColumn(i);
+                IColumn c2 = d2.GetColumn(i);
+
+                if (!ColumnOperations.IsNumericColumn(c1) || !ColumnOperations.IsNumericColumn(c2))
+                {
+                    if (!c1.Equals(c2))
+                        return false;
+                }
+                else
+                {
+                    IColumn diff = ColumnOperations.Sub(c1, c2, "diff");
+
+                    if (c1.GetMissingValueCount() != diff.GetMissingValueCount() ||
+                        c2.GetMissingValueCount() != diff.GetMissingValueCount())
+                        return false;
+
+                    // check min value is not less than -delta
+                    IntSet rowIndices = diff.GetRowIndicesInSortedOrder(true);
+                    //#framework
+                    //IntIterator iter = rowIndices.iterator();
+                    IEnumerator<int> iter = rowIndices.GetEnumerator();
+                    do
+                    {
+                        int index = iter.Current;
+                        if (diff.IsMissingValue(index))
+                            break;
+                        if (diff.GetFloat(index) < -delta)
+                            return false;
+                        break;
+                    }
+                    while (iter.MoveNext()) ;
+
+                        // check max value is not greater than delta
+                        rowIndices = diff.GetRowIndicesInSortedOrder(false);
+                    //iter = rowIndices.iterator();
+                    iter = rowIndices.GetEnumerator();
+                    do
+                    {
+                        int index = iter.Current;
+                        if (diff.IsMissingValue(index))
+                            continue;
+                        if (diff.GetFloat(index) > delta)
+                            return false;
+                        break;
+                    }
+                    while (iter.MoveNext()) ;
+                }
+            }
+
+            return true;
+        }
+
+
+        public static IDataset CloneDataset(IDataset d, bool deep)
+        {
+            int columnCount = d.GetColumnCount();
+            IColumn[] columns = new IColumn[columnCount];
+            for (int i = 0; i < columnCount; i++)
+                columns[i] = deep ?
+                             ColumnFactory.CloneColumn(d.GetColumn(i)) :
+                             d.GetColumn(i);
+            return DatasetFactory.CreateDataset(d.GetName(), columns);
+        }
 
 
     }
+
+    //#framework
+
+    public class CategoricalState /*: IndexedBintArray*/
+    {
+        public static string FORMAT_ID = "cube.dataset.DatasetUtil$CategoricalState";
+
+        int[] data;
+        int[] offset;
+        int[] lookup;
+
+        public CategoricalState(IColumn c)
+        {
+            int catcount = c.GetCategoryCount();
+            int size = c.GetSize();
+
+            lookup = new int[size];
+            data = new int[size];
+            offset = new int[catcount + 1];
+
+            int index = 0;
+            for (int i = 0; i < catcount; i++)
+            {
+                offset[i] = index;
+
+                //IntIterator iterator = c.getRowIndicesOfCategory(i).iterator();
+                IEnumerator<int> iterator = c.GetRowIndicesOfCategory(i).GetEnumerator();
+                do
+                {
+                    int value = iterator.Current;
+                    data[index++] = value;
+                    lookup[value] = i;
+                }
+                while (iterator.MoveNext()) ;
+            }
+            offset[catcount] = size;
+        }
+
+        /// <summary>
+        /// for hexff
+        /// </summary>
+        private CategoricalState()
+        {
+        }
+
+        // for hexff
+        private void Initialize()
+        {
+            /*
+            int index = 0;
+            lookup = new int[data.length];
+
+            for (int i=0; i < lookup.length; i++)
+            lookup[i] = -1;
+
+            for (int i=1; i<offset.length; i++) {
+            for (int j=offset[i-1]; j < offset[i]; j++)
+                lookup[data[j]] = i;
+            }
+            */
+        }
+
+        public int GetSize()
+        {
+            return data.Length;
+        }
+
+        public int Get(int i)
+        {
+            return data[i];
+        }
+
+        public /*IntIterator*/ void Iterator()
+        {
+            //return ArrayUtil.createIntIterator(data);
+        }
+
+        public int GetBinCount()
+        {
+            return offset.Length - 1;
+        }
+
+        public /*IntArray*/ void GetBin(int binIndex)
+        {
+            //return ArrayUtil.createIntArray(data, offset[binIndex], offset[binIndex + 1]);
+        }
+
+        public int GetBinIndex(int value)
+        {
+            if (0 <= value && value < data.Length)
+                return lookup[value];
+            return -1;
+        }
+
+        public bool Contains(int value)
+        {
+            return 0 <= value && value < data.Length;
+        }
+
+    }
+
+
     //#framework
     internal class ColumnFloatArray /*:AbstractFloatArray*/
     {
