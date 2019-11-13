@@ -7,11 +7,7 @@ namespace com.strandgenomics.cube.dataset.Tests
     public class NullColumnTests
     {
         private static NullColumn nullCol;
-        public TestContext TestContext
-        {
-            get;
-            set;
-        }
+        public TestContext TestContext { get; set; }
 
         [ClassInitialize]
         public static void SetUp(TestContext testContext)
@@ -218,15 +214,9 @@ namespace com.strandgenomics.cube.dataset.Tests
         }
 
         [TestCleanup]
-        public void TestCleanUp()
-        {
-            TestContext.WriteLine(TestContext.TestName + " has " + TestContext.CurrentTestOutcome.ToString());
-        }
+        public void TestCleanUp() => TestContext.WriteLine(TestContext.TestName + " has " + TestContext.CurrentTestOutcome.ToString());
 
         [ClassCleanup]
-        public static void CleanUp()
-        {
-            nullCol = null;
-        }
+        public static void CleanUp() => nullCol = null;
     }
 }

@@ -6,11 +6,7 @@ namespace com.strandgenomics.cube.dataset.Tests
     [TestClass()]
     public class BitColumnTests
     {
-        public TestContext TestContext
-        {
-            get;
-            set;
-        }
+        public TestContext TestContext { get; set; }
 
         private static BitColumn col;
         [ClassInitialize]
@@ -82,49 +78,28 @@ namespace com.strandgenomics.cube.dataset.Tests
 
         [TestMethod]
         [Owner("Harika")]
-        public void GetFloatTest()
-        {
-            Assert.AreEqual(0.0f, col.GetFloat(0));
-        }
+        public void GetFloatTest() => Assert.AreEqual(0.0f, col.GetFloat(0));
 
         [TestMethod]
         [Owner("Harika")]
-        public void GetIntTest()
-        {
-            Assert.AreEqual(0, col.GetInt(0));
-        }
+        public void GetIntTest() => Assert.AreEqual(0, col.GetInt(0));
 
         [TestMethod]
         [Owner("Harika")]
-        public void IsCategorical()
-        {
-            Assert.AreEqual(false, col.IsCategorical());
-        }
+        public void IsCategorical() => Assert.AreEqual(false, col.IsCategorical());
 
         [TestMethod()]
         [Owner("Harika")]
-        public void GetNumericValueTest()
-        {
-            Assert.AreEqual(0, col.GetNumericValue(0));
-        }
+        public void GetNumericValueTest() => Assert.AreEqual(0, col.GetNumericValue(0));
 
         [TestMethod()]
         [Owner("Harika")]
-        public void GetSumTest()
-        {
-            Assert.AreEqual(1, col.GetSum());
-        }
+        public void GetSumTest() => Assert.AreEqual(1, col.GetSum());
 
         [TestCleanup]
-        public void TestCleanUp()
-        {
-            TestContext.WriteLine(TestContext.TestName + " has " + TestContext.CurrentTestOutcome.ToString());
-        }
+        public void TestCleanUp() => TestContext.WriteLine(TestContext.TestName + " has " + TestContext.CurrentTestOutcome.ToString());
 
         [ClassCleanup]
-        public static void CleanUp()
-        {
-            col = null;
-        }
+        public static void CleanUp() => col = null;
     }
 }

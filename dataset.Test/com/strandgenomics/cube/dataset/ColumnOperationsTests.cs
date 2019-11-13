@@ -6,11 +6,8 @@ namespace com.strandgenomics.cube.dataset.Tests
     [TestClass()]
     public class ColumnOperationsTests
     {
-        public TestContext TestContext
-        {
-            get;
-            set;
-        }
+        public TestContext TestContext { get; set; }
+        
         [TestMethod()]
         public void LogTest()
         {
@@ -243,7 +240,7 @@ namespace com.strandgenomics.cube.dataset.Tests
 
         }
 
-       
+
 
         //[TestMethod]
         //public void GetMedian_PrivateMethod()
@@ -255,9 +252,6 @@ namespace com.strandgenomics.cube.dataset.Tests
         //}
 
         [TestCleanup]
-        public void TestCleanUp()
-        {
-            TestContext.WriteLine(TestContext.TestName + " has " + TestContext.CurrentTestOutcome.ToString());
-        }
+        public void TestCleanUp() => TestContext.WriteLine(TestContext.TestName + " has " + TestContext.CurrentTestOutcome.ToString());
     }
 }

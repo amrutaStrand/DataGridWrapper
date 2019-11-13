@@ -6,11 +6,7 @@ namespace com.strandgenomics.cube.dataset.Tests
     [TestClass()]
     public class ColumnOperationUtilTests
     {
-        public TestContext TestContext
-        {
-            get;
-            set;
-        }
+        public TestContext TestContext { get; set; }
 
         [TestMethod]
         public void TestSafeEquals()
@@ -34,9 +30,6 @@ namespace com.strandgenomics.cube.dataset.Tests
         }
 
         [TestCleanup]
-        public void TestCleanUp()
-        {
-            TestContext.WriteLine(TestContext.TestName + " has " + TestContext.CurrentTestOutcome.ToString());
-        }
+        public void TestCleasnUp() => TestContext.WriteLine(TestContext.TestName + " has " + TestContext.CurrentTestOutcome.ToString());
     }
 }
