@@ -64,6 +64,7 @@
     <Compile Include="com\strandgenomics\cube\dataset\AbstractRegularColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\BasicColumnOperations.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\BitColumn.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\DecimalColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnChangedEventArgs.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnFactory.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ColumnMetaData.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="com\strandgenomics\cube\dataset\DatasetFactory.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\DatasetUtil.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\DateColumn.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\DoubleColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\EnumColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\FloatColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\FloorIntset.cs" />

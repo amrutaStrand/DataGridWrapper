@@ -6,22 +6,22 @@ using System.Threading.Tasks;
 
 namespace com.strandgenomics.cube.dataset
 {
-    public sealed class FloatColumn : AbstractRegularColumn
+    public class DoubleColumn : AbstractRegularColumn
     {
-        private static string fORMAT_ID = "cube.dataset.FloatColumn";
-    
-        private static string dATATYPE = "float";
+        private static string fORMAT_ID = "cube.dataset.DoubleColumn";
+
+        private static string dATATYPE = "double";
 
         /// <summary>
         /// raw data associtated with column.
         /// </summary>
-        private float[] data;
-        public FloatColumn(string name, float[] data):base(name,data.Length)
+        private double[] data;
+        public DoubleColumn(string name, double[] data) : base(name, data.Length)
         {
             this.data = data;
         }
 
-        public FloatColumn(string name, float[] data, int size):base(name, size)
+        public DoubleColumn(string name, double[] data, int size) : base(name, size)
         {
             if (size > data.Length)
             {
@@ -36,7 +36,7 @@ namespace com.strandgenomics.cube.dataset
 
         public override object Get(int index)
         {
-            return (data[index] == DatasetConstants.FLOAT_MV) ? null : (object) data[index];
+            return (data[index] == DatasetConstants.Double_MV) ? null : (object)data[index];
         }
 
         public override IComparable GetComparable(int index)
@@ -51,7 +51,7 @@ namespace com.strandgenomics.cube.dataset
 
         public override float GetFloat(int index)
         {
-            return data[index];
+            return (float)data[index];
         }
 
         public override int GetInt(int index)
@@ -67,7 +67,12 @@ namespace com.strandgenomics.cube.dataset
             if (IsCategorical())
                 return GetCategoryIndex(index);
             else
-                return data[index];
+                return (float)data[index];
+        }
+
+        public double GetDouble(int index)
+        {
+            return data[index];
         }
     }
 }
