@@ -20,6 +20,21 @@ namespace com.strandgenomics.cube.dataset
             ColumnChanged?.Invoke(this, e);
         }
 
+        public void AddColumnListener()
+        {
+            this.ColumnChanged += ColumnChangedHandler;
+        }
+
+        public void RemoveColumnListener()
+        {
+            this.ColumnChanged -= ColumnChangedHandler;
+        }
+        //Need to figure out what to do when column data has changed.
+        public void ColumnChangedHandler(object sender, ColumnChangedEventArgs e)
+        {
+            
+        }
+
         protected bool CompareData(IColumn c)
         {
             int size = GetSize();
@@ -108,7 +123,7 @@ namespace com.strandgenomics.cube.dataset
         /// <param name="b"></param>
         public virtual void SetCategorical(bool b)
         {
-            ColumnChangedEventArgs e = new ColumnChangedEventArgs(DatasetConstants.STATE_CHANGED);
+            ColumnChangedEventArgs e = new ColumnChangedEventArgs(ColumnChangedEventArgs.STATE_CHANGED);
             e.Column = this;
             try
             {
@@ -129,7 +144,7 @@ namespace com.strandgenomics.cube.dataset
         public abstract void SetName0(string name);
         public virtual void SetName(string name)
         {
-            ColumnChangedEventArgs e = new ColumnChangedEventArgs(DatasetConstants.NAME_CHANGED);
+            ColumnChangedEventArgs e = new ColumnChangedEventArgs(ColumnChangedEventArgs.NAME_CHANGED);
             string oldName = GetName();
             string newName = name;
 

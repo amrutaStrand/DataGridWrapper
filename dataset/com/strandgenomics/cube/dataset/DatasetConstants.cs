@@ -8,7 +8,6 @@
         public const double Double_MV = double.MaxValue;
         public const decimal Decimal_MV = decimal.MaxValue;
 
-        public const int NAME_CHANGED = 0;
-        public const int STATE_CHANGED = 1;
+        
     }
 }

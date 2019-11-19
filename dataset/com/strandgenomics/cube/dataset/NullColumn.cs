@@ -11,6 +11,12 @@ namespace com.strandgenomics.cube.dataset
         {
             this.name = name;
         }
+
+        public void AddColumnListener()
+        {
+            throw new NotImplementedException();
+        }
+
         public object Get(int index)
         {
             return "";
@@ -130,6 +136,11 @@ namespace com.strandgenomics.cube.dataset
         public bool IsMissingValue(int index)
         {
             return true;
+        }
+
+        public void RemoveColumnListener()
+        {
+            throw new NotImplementedException();
         }
 
         public void SetCategorical(bool b)

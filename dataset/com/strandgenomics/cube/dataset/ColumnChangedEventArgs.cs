@@ -7,6 +7,8 @@ namespace com.strandgenomics.cube.dataset
         private int type;
         string oldName;
         string newName;
+        public const int NAME_CHANGED = 0;
+        public const int STATE_CHANGED = 1;
 
         IColumn column;
 

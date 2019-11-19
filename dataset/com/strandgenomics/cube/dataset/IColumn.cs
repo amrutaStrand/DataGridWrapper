@@ -234,22 +234,22 @@ namespace com.strandgenomics.cube.dataset
         /// <returns></returns>
         IntSet GetRowIndicesInRange(float min, bool minOpen, float max, bool maxOpen);
 
-        //removed since we dont need them in c# implementation.
+        
 
-        ///// <summary>
-        ///// Adds a column listener to this column. This method is
-        ///// for internal use only for the dataset to be aware of
-        ///// column change events.
-        ///// </summary>
-        ///// <param name="l"></param>
-        //void AddColumnListener(IColumnChanged l);
+        /// <summary>
+        /// Adds a column listener to this column. This method is
+        /// for internal use only for the dataset to be aware of
+        /// column change events.
+        /// </summary>
+        /// <param name="l"></param>
+        void AddColumnListener();
 
-        ///// <summary>
-        /////  Removes a column listener from this column. This method 
-        /////  is for internal use only.
-        ///// </summary>
-        ///// <param name="l"></param>
-        //void RemoveColumnListener(IColumnChanged l);
+        /// <summary>
+        ///  Removes a column listener from this column. This method 
+        ///  is for internal use only.
+        /// </summary>
+        /// <param name="l"></param>
+        void RemoveColumnListener();
 
     }
 }

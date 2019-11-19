@@ -65,7 +65,7 @@ namespace com.strandgenomics.cube.dataset
 
         private void FireNameChanged(string oldName, string newName)
         {
-            ColumnChangedEventArgs args = new ColumnChangedEventArgs(DatasetConstants.NAME_CHANGED);
+            ColumnChangedEventArgs args = new ColumnChangedEventArgs(ColumnChangedEventArgs.NAME_CHANGED);
 
             args.Column = this;
 

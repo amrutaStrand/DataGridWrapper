@@ -56,7 +56,7 @@ namespace com.strandgenomics.cube.dataset
         /// </summary>
         /// <param name="name">name of the column required</param>
         /// <returns></returns>
-        ColumnMetaData GetMetaData(String name);
+        ColumnMetaData GetMetaData(string name);
 
         /// <summary>
         /// Sets the column meta data of column with the specified name.
