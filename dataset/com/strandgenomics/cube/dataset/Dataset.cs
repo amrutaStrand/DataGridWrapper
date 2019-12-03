@@ -12,7 +12,7 @@ namespace com.strandgenomics.cube.dataset
     ///  Dataset implementation. IMPORTANT : To create a dataset
     ///  use the <code>DatasetFactory</code> class.
     /// </summary>
-    public class Dataset : IDataset, IDataChanged
+    public class Dataset : IDataset, IColumnChanged, IDataChanged
     {
         /// <summary>
         /// Hexff format id.
@@ -46,8 +46,6 @@ namespace com.strandgenomics.cube.dataset
         protected bool lockedFlag;
 
 
-        public event DataChangedEventHandler DataChanged;
-
 
         public Dataset()
         {
@@ -64,13 +62,19 @@ namespace com.strandgenomics.cube.dataset
             columnMap = new Dictionary<string, IColumn>();
         }
 
+
+        public event ColumnChangedEventHandler ColumnChanged;
+        public event DataChangedEventHandler DataChanged;
+
         private void Initialize()
         {
             columnMap = new Dictionary<string, IColumn>(GetColumnCount());
 
             UpdateColumnMap();
-           //removed updateColumnListners since we dont need it.
+            UpdateColumnListners();
+
         }
+
 
 
         protected void FireDataChanged(DataChangedEventArgs e)
@@ -92,6 +96,16 @@ namespace com.strandgenomics.cube.dataset
         }
 
 
+        protected void UpdateColumnListners()
+        {
+            int columnCount = GetColumnCount();
+            for (int i = 0; i < columnCount; i++)
+            {
+                IColumn c = GetColumn(i);
+                c.AddColumnListener(this);
+            }
+        }
+
         public void AddColumn(IColumn column)
         {
             AddColumns(new IColumn[] { column });
@@ -108,14 +122,14 @@ namespace com.strandgenomics.cube.dataset
 
                 columns.Add(c);
                 columnMap.Add(c.GetName(), c);
-                //c.AddColumnListener(this);
+                c.AddColumnListener(this);
             }
             FireColumnsAdded(Enumerable.Range(columnCount, columnCount + cols.Length).ToArray(), cols);
         }
 
 
         //#framework
-        private void FireColumnsAdded(int[] indices, IColumn[] columns)
+        protected void FireColumnsAdded(int[] indices, IColumn[] columns)
         {
             DataChangedEventArgs args = new DataChangedEventArgs(this, DataChangedEventArgs.COLUMNS_ADDED);
             //args.columnIndices = indices;
@@ -170,7 +184,7 @@ namespace com.strandgenomics.cube.dataset
                 columns.Remove(cols[i]);
                 columnMap.Remove(cols[i].GetName());
 
-                cols[i].RemoveColumnListener();
+                cols[i].RemoveColumnListener(this);
             }
             FireColumnsRemoved(indices, cols);
         }
@@ -204,7 +218,7 @@ namespace com.strandgenomics.cube.dataset
             for (int i = 0; i < cols.Length; i++)
             {
                 indices.Append(i);
-                cols[i].RemoveColumnListener();
+                cols[i].RemoveColumnListener(this);
             }
             FireColumnsRemoved(indices, cols);
         }
@@ -414,8 +428,8 @@ namespace com.strandgenomics.cube.dataset
             columnMap.Remove(oldColumn.GetName());
             columnMap.Add(newColumn.GetName(), newColumn);
 
-            oldColumn.RemoveColumnListener();
-            newColumn.AddColumnListener();
+            oldColumn.RemoveColumnListener(this);
+            newColumn.AddColumnListener(this);
 
             FireColumnsReplaced(Enumerable.Range(columnIndex, columnIndex + 1).ToArray(),
                 new IColumn[] { oldColumn }, new IColumn[] { newColumn });
@@ -439,7 +453,7 @@ namespace com.strandgenomics.cube.dataset
         }
 
 
-        public void ColumnChanged(ColumnChangedEventArgs e)
+        public void ColumnChangedEvent(ColumnChangedEventArgs e)
         {
 
             int type = e.GetChangeType();
@@ -500,31 +514,27 @@ namespace com.strandgenomics.cube.dataset
             this.name = name;
         }
 
-
-        public void AddDataListener()
-        {
-            this.DataChanged += DataChangedHandler;
-        }
-
         /// <summary>
-        /// Still need to figure what this will do.
+        /// Still need to figure what this will do. after all the dependencies are built.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void DataChangedHandler(object sender, DataChangedEventArgs e)
+        protected void DataChangedHandler(object sender, DataChangedEventArgs e)
         {
-            throw new NotImplementedException();
+           //does nothing for now 
+
         }
 
-        /**
-         * Remove the DataListener from this dataset.
-         */
-        public void RemoveDataListener()
+        public void AddDataListener(IDataChanged l)
         {
-            this.DataChanged -= DataChangedHandler;
+            l.DataChanged += DataChangedHandler;
         }
 
+        public void RemoveDataListener(IDataChanged l)
+        {
+            l.DataChanged += DataChangedHandler;
 
+        }
     }
 
 

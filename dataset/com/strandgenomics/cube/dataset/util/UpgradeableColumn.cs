@@ -136,6 +136,15 @@ namespace com.strandgenomics.cube.dataset.util
                 c = ColumnFactory.CreateFloatColumn(name, (float[])columnData.GetData(), maxDataIndex);
             }
 
+            else if (columnData is DoubleColumnDataUC)
+            {
+                c = ColumnFactory.CreateDoubleColumn(name, (double[])columnData.GetData(), maxDataIndex);
+            }
+            else if (columnData is DecimalColumnDataUC)
+            {
+                c = ColumnFactory.CreateDecimalColumn(name, (decimal[])columnData.GetData(), maxDataIndex);
+            }
+
 
             else if (columnData is DateColumnDataUC)
             {
@@ -284,6 +293,103 @@ namespace com.strandgenomics.cube.dataset.util
             return data;
         }
     }
+
+
+
+    internal class DoubleColumnDataUC : IColumnDataUC
+    {
+
+
+        private double[] data;
+
+        public DoubleColumnDataUC(int size)
+        {
+            data = new double[size];
+            InitializeData();
+        }
+
+        private void InitializeData()
+        {
+            for (int i = 0; i < data.Length; i++)
+                data[i] = DatasetConstants.DOUBLE_MV;
+        }
+
+        public void Set(int index, string value)
+        {
+            data[index] = double.Parse(value);
+        }
+
+        public double GetDouble(int index)
+        {
+            return data[index];
+        }
+
+        public string Get(int index)
+        {
+            if (data[index] == DatasetConstants.DOUBLE_MV)
+                return null;
+            return data[index].ToString();
+        }
+
+        public void SetDouble(int index, double f)
+        {
+            data[index] = f;
+        }
+
+        public object GetData()
+        {
+            return data;
+        }
+    }
+
+
+    internal class DecimalColumnDataUC : IColumnDataUC
+    {
+
+
+        private decimal[] data;
+
+        public DecimalColumnDataUC(int size)
+        {
+            data = new decimal[size];
+            InitializeData();
+        }
+
+        private void InitializeData()
+        {
+            for (int i = 0; i < data.Length; i++)
+                data[i] = DatasetConstants.DECIMAL_MV;
+        }
+
+        public void Set(int index, string value)
+        {
+            data[index] = decimal.Parse(value);
+        }
+
+        public decimal GetDecimal(int index)
+        {
+            return data[index];
+        }
+
+        public string Get(int index)
+        {
+            if (data[index] == DatasetConstants.DECIMAL_MV)
+                return null;
+            return data[index].ToString();
+        }
+
+        public void SetDecimal(int index, decimal f)
+        {
+            data[index] = f;
+        }
+
+        public object GetData()
+        {
+            return data;
+        }
+    }
+
+
 
     internal class DateColumnDataUC : IColumnDataUC
     {

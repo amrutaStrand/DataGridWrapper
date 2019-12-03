@@ -158,6 +158,16 @@ namespace com.strandgenomics.cube.dataset
             throw new NotImplementedException();
         }
 
+        public override double GetDouble(int index)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override decimal GetDecimal(int index)
+        {
+            throw new NotImplementedException();
+        }
+
         //makeComparavle is not yet implemented.
 
     }

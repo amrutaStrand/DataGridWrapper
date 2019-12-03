@@ -463,6 +463,28 @@ namespace com.strandgenomics.cube.dataset
             return c.GetDatatype().Equals(ColumnFactory.DATATYPE_INT);
         }
 
+
+        /// <summary>
+        /// Returns true if the specfied column is an double column.
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static bool IsDoubleColumn(IColumn c)
+        {
+            return c.GetDatatype().Equals(ColumnFactory.DATATYPE_DOUBLE);
+        }
+
+
+        /// <summary>
+        /// Returns true if the specfied column is an decimal column.
+        /// </summary>
+        /// <param name="c"></param>
+        /// <returns></returns>
+        public static bool IsDecimalColumn(IColumn c)
+        {
+            return c.GetDatatype().Equals(ColumnFactory.DATATYPE_DECIMAL);
+        }
+
         /// <summary>
         /// Returns true if the specfied column is an string column.
         /// </summary>

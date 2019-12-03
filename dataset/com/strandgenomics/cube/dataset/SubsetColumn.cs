@@ -73,7 +73,7 @@ namespace com.strandgenomics.cube.dataset
 
             args.NewName = newName;
 
-            NotifyColumnChanged(args);
+            FireColumnChanged(args);
         }
         public override object Get(int index)
         {
@@ -451,6 +451,16 @@ namespace com.strandgenomics.cube.dataset
         public override void SetName0(string name)
         {
             orgColumn.SetName(name);
+        }
+
+        public override double GetDouble(int index)
+        {
+            return orgColumn.GetDouble(GetDataIndex(index));
+        }
+
+        public override decimal GetDecimal(int index)
+        {
+            return orgColumn.GetDecimal(GetDataIndex(index));
         }
     }
 }

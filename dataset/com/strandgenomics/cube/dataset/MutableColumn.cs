@@ -297,6 +297,26 @@ namespace com.strandgenomics.cube.dataset
                 subList.Add(col.Get(rowIndices[i]));
             return subList;
         }
+
+        public override double GetDouble(int index)
+        {
+            if (IsCategorical())
+                return GetCategoryIndex(index);
+            else if (data[index] == null)
+                return DatasetConstants.DOUBLE_MV;
+            else
+                return double.Parse(data[index].ToString());
+        }
+
+        public override decimal GetDecimal(int index)
+        {
+            if (IsCategorical())
+                return GetCategoryIndex(index);
+            else if (data[index] == null)
+                return DatasetConstants.DECIMAL_MV;
+            else
+                return decimal.Parse(data[index].ToString());
+        }
     }
     
 }

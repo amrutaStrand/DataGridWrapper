@@ -10,7 +10,7 @@ namespace com.strandgenomics.cube.dataset
         
         public static bool IsNumericColumn(IColumn c)
         {
-            return DatasetUtil.IsFloatColumn(c) || DatasetUtil.IsIntegerColumn(c);
+            return DatasetUtil.IsFloatColumn(c) || DatasetUtil.IsIntegerColumn(c) || DatasetUtil.IsDecimalColumn(c)||DatasetUtil.IsDoubleColumn(c);
         }
 
         public static float ToFloat(object o)
@@ -22,6 +22,18 @@ namespace com.strandgenomics.cube.dataset
         {
             return (int) o;
         }
+
+        public static double ToDouble(object o)
+        {
+            return (double)o;
+        }
+
+        public static decimal ToDecimal(object o)
+        {
+            return (decimal)o;
+        }
+
+
 
         /// <summary>
         /// Creates a float column with the specified name and data.
@@ -95,6 +107,78 @@ namespace com.strandgenomics.cube.dataset
             return c;
         }
 
+        /// <summary>
+        /// Creates a double column with the specified name and data.
+        /// mark and groupInfo of the source are propagated to the new column.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        protected static IColumn CreateDoubleColumn(string name, double[] data, IColumn source)
+        {
+            IColumn c = ColumnFactory.CreateDoubleColumn(name, data);
+
+            UpdateMetaData(c, source);
+            return c;
+        }
+
+        /// <summary>
+        /// Creates a double column with the specified name and data.
+        /// mark and groupInfo of the source are propagated to the new column
+        /// if both the sources have mark/groupInfo.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <param name="source1"></param>
+        /// <param name="source2"></param>
+        /// <returns></returns>
+        protected static IColumn CreateDoubleColumn(
+        string name, double[] data,
+        IColumn source1, IColumn source2)
+        {
+
+            IColumn c = ColumnFactory.CreateDoubleColumn(name, data);
+            UpdateMetaData(c, source1, source2);
+            return c;
+        }
+
+
+        /// <summary>
+        /// Creates a decimal column with the specified name and data.
+        /// mark and groupInfo of the source are propagated to the new column.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <param name="source"></param>
+        /// <returns></returns>
+        protected static IColumn CreateDecimalColumn(string name, decimal[] data, IColumn source)
+        {
+            IColumn c = ColumnFactory.CreateDecimalColumn(name, data);
+
+            UpdateMetaData(c, source);
+            return c;
+        }
+
+        /// <summary>
+        /// Creates a decimal column with the specified name and data.
+        /// mark and groupInfo of the source are propagated to the new column
+        /// if both the sources have mark/groupInfo.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <param name="source1"></param>
+        /// <param name="source2"></param>
+        /// <returns></returns>
+        protected static IColumn CreateDecimalColumn(
+        string name, int[] data,
+        IColumn source1, IColumn source2)
+        {
+
+            IColumn c = ColumnFactory.CreateIntColumn(name, data);
+            UpdateMetaData(c, source1, source2);
+            return c;
+        }
 
         public static void UpdateMetaData(IColumn result, IColumn source)
         {

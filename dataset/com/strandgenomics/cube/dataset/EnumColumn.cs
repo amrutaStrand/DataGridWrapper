@@ -127,6 +127,20 @@ namespace com.strandgenomics.cube.dataset
                 InvalidMethodException();
             base.SetCategorical(b);
         }
+
+        public override double GetDouble(int index)
+        {
+            Enum val = data[index];
+            //return val.ordinal();     need to figure how to type cast Enum to int or how to get the val.ordinal() alternative.
+            return 0;
+        }
+
+        public override decimal GetDecimal(int index)
+        {
+            Enum val = data[index];
+            //return val.ordinal();     need to figure how to type cast Enum to int or how to get the val.ordinal() alternative.
+            return 0;
+        }
     }
 }
 

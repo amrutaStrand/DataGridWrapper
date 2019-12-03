@@ -21,7 +21,6 @@ E:\dotnet_rep\cube\dataset\trunk\dataset\bin\Debug\fastest.pdb
 E:\dotnet_rep\cube\dataset\trunk\dataset\bin\Debug\framework.pdb
 E:\dotnet_rep\cube\dataset\trunk\dataset\obj\Debug\dataset.csproj.CopyComplete
 E:\gitlab repos\cube-dataset\dataset\obj\Debug\dataset.csprojAssemblyReference.cache
-E:\gitlab repos\cube-dataset\dataset\obj\Debug\dataset.csproj.CoreCompileInputs.cache
 E:\gitlab repos\cube-dataset\dataset\obj\Debug\dataset.dll
 E:\gitlab repos\cube-dataset\dataset\obj\Debug\dataset.pdb
 E:\gitlab repos\cube-dataset\dataset\bin\Debug\dataset.dll

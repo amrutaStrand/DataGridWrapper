@@ -40,6 +40,11 @@ namespace com.strandgenomics.cube.dataset
             throw new NotImplementedException();
         }
 
+        public void AddDataListener(IDataChanged l)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Cleanup()
         {
             throw new NotImplementedException();
@@ -136,6 +141,11 @@ namespace com.strandgenomics.cube.dataset
         }
 
         public void RemoveColumns(IColumn[] column)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveDataListener(IDataChanged l)
         {
             throw new NotImplementedException();
         }

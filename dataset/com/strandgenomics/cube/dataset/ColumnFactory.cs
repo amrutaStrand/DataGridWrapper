@@ -23,6 +23,8 @@ namespace com.strandgenomics.cube.dataset
         public static string DATATYPE_STRING = StringColumn.DATATYPE;
         public static string DATATYPE_FLOAT = FloatColumn.DATATYPE;
         public static string DATATYPE_INT = IntColumn.DATATYPE;
+        public static string DATATYPE_DOUBLE = DoubleColumn.DATATYPE;
+        public static string DATATYPE_DECIMAL = DecimalColumn.DATATYPE;
         public static string DATATYPE_DATE = DateColumn.DATATYPE;
         public static string DATATYPE_BIT = BitColumn.DATATYPE;
         public static string DATATYPE_OBJECT = ObjectColumn.DATATYPE;
@@ -182,6 +184,39 @@ namespace com.strandgenomics.cube.dataset
             }
         }
 
+
+        /// <summary>
+        /// Modifies the contents of double array by replacing Nans and Infinities with MISSING_VALUE (it is Float.MAX_VAVLUE)
+        /// </summary>
+        /// <param name="dataorg">float[]</param>
+        private static void RemoveNanAndInf(double[] dataorg)
+        {
+            for (int i = 0; i < dataorg.Length; i++)
+            {
+                double f = dataorg[i];
+                if (double.IsNaN(f) || double.IsInfinity(f))
+                {
+                    dataorg[i] = double.MaxValue;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Modifies the contents of double array by replacing Nans and Infinities with MISSING_VALUE (it is Float.MAX_VAVLUE)
+        /// </summary>
+        /// <param name="dataorg">float[]</param>
+        private static void RemoveNanAndInf(decimal[] dataorg)
+        {
+            for (int i = 0; i < dataorg.Length; i++)
+            {
+                double f = (double)dataorg[i];
+                if (double.IsNaN(f) || double.IsInfinity(f))
+                {
+                    dataorg[i] = decimal.MaxValue;
+                }
+            }
+        }
+
         /// <summary>
         /// Factory method to create a float column.
         /// </summary>
@@ -200,6 +235,46 @@ namespace com.strandgenomics.cube.dataset
         {
             return CreateFloatColumn(name, data, data.Length);
         }
+
+        /// <summary>
+        /// Factory method to create a double column.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static IColumn CreateDoubleColumn(string name, double[] data, int size)
+        {
+            RemoveNanAndInf(data);
+            IColumn c = new DoubleColumn(name, data, size);
+            return c;
+        }
+
+        public static IColumn CreateDoubleColumn(string name, double[] data)
+        {
+            return CreateDoubleColumn(name, data, data.Length);
+        }
+
+
+        /// <summary>
+        /// Factory method to create a decimal column.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="data"></param>
+        /// <param name="size"></param>
+        /// <returns></returns>
+        public static IColumn CreateDecimalColumn(string name, decimal[] data, int size)
+        {
+            RemoveNanAndInf(data);
+            IColumn c = new DecimalColumn(name, data, size);
+            return c;
+        }
+
+        public static IColumn CreateDecimalColumn(string name, decimal[] data)
+        {
+            return CreateDecimalColumn(name, data, data.Length);
+        }
+
 
         /// <summary>
         /// Factory method to create a date column.

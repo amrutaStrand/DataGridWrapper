@@ -110,5 +110,21 @@ namespace com.strandgenomics.cube.dataset
             }
             return sum;
         }
+
+        public override double GetDouble(int index)
+        {
+            if (data.Get(index))
+                return 1.0d;
+            else
+                return 0.0d;
+        }
+
+        public override decimal GetDecimal(int index)
+        {
+            if (data.Get(index))
+                return (decimal)1.0;
+            else
+                return (decimal)0.0;
+        }
     }
 }

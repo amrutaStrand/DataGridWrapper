@@ -17,6 +17,11 @@ namespace com.strandgenomics.cube.dataset
             throw new NotImplementedException();
         }
 
+        public void AddColumnListener(IColumnChanged o)
+        {
+            throw new NotImplementedException();
+        }
+
         public object Get(int index)
         {
             return "";
@@ -51,6 +56,16 @@ namespace com.strandgenomics.cube.dataset
         public string GetDatatype()
         {
             return "string";
+        }
+
+        public decimal GetDecimal(int index)
+        {
+            return DatasetConstants.DECIMAL_MV;
+        }
+
+        public double GetDouble(int index)
+        {
+            return DatasetConstants.DOUBLE_MV;
         }
 
         public float GetFloat(int index)
@@ -139,6 +154,11 @@ namespace com.strandgenomics.cube.dataset
         }
 
         public void RemoveColumnListener()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void RemoveColumnListener(IColumnChanged o)
         {
             throw new NotImplementedException();
         }

@@ -36,7 +36,7 @@ namespace com.strandgenomics.cube.dataset
 
         public override object Get(int index)
         {
-            return (data[index] == DatasetConstants.Decimal_MV) ? null : (object)data[index];
+            return (data[index] == DatasetConstants.DECIMAL_MV) ? null : (object)data[index];
         }
 
         public override IComparable GetComparable(int index)
@@ -70,7 +70,16 @@ namespace com.strandgenomics.cube.dataset
                 return (float)data[index];
         }
 
-        public decimal GetDecimal(int index)
+      
+        public override double GetDouble(int index)
+        {
+            if (IsMissingValue(index))
+                return DatasetConstants.DOUBLE_MV;
+            else
+                return (double)data[index];
+        }
+
+        public override decimal GetDecimal(int index)
         {
             return data[index];
         }

@@ -49,6 +49,22 @@ namespace com.strandgenomics.cube.dataset
             return DATATYPE;
         }
 
+        public override decimal GetDecimal(int index)
+        {
+            if (IsMissingValue(index))
+                return DatasetConstants.DECIMAL_MV;
+            else
+                return (decimal)data[index];
+        }
+
+        public override double GetDouble(int index)
+        {
+            if (IsMissingValue(index))
+                return DatasetConstants.DOUBLE_MV;
+            else
+                return (double)data[index];
+        }
+
         public override float GetFloat(int index)
         {
             return data[index];

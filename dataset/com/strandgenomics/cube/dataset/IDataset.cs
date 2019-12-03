@@ -172,18 +172,17 @@ namespace com.strandgenomics.cube.dataset
         /// <returns></returns>
         bool IsLocked();
 
-        //Addlistner and remove listner is removed because it is not required in c#. (source of these methods Avadis java class).
-        ///// <summary>
-        ///// Adds a DataListener to this dataset.
-        ///// </summary>
-        ///// <param name="l"></param>
-        //void AddDataListener(IDataChanged l);
+        /// <summary>
+        /// Adds a DataListener to this dataset.
+        /// </summary>
+        /// <param name="l"></param>
+        void AddDataListener(IDataChanged l);
 
-        ///// <summary>
-        ///// Remove the DataListener from this dataset.
-        ///// </summary>
-        ///// <param name="l"></param>
-        //void RemoveDataListener(IDataChanged l);
+        /// <summary>
+        /// Remove the DataListener from this dataset.
+        /// </summary>
+        /// <param name="l"></param>
+        void RemoveDataListener(IDataChanged l);
 
         /// <summary>
         /// Cleanup.

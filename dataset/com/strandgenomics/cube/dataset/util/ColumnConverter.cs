@@ -63,8 +63,17 @@ namespace com.strandgenomics.cube.dataset.util
                 return ColumnFactory.CreateIntColumn(columnName, newData);
             }
 
-            else
-            { // if (newType.Equals("date"))
+            else if (newType.Equals("decimal"))
+            {
+                decimal[] newData = new decimal[size];
+                for (int i = 0; i < size; i++)
+                {
+                    newData[i] = column.GetDecimal(i);
+                }
+                return ColumnFactory.CreateDecimalColumn(columnName, newData);
+            }
+            else//if (newType.Equals("date"))
+            { 
                 long[] newData = new long[size];
                 for (int i = 0; i < size; i++)
                 {

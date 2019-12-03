@@ -179,5 +179,15 @@ namespace com.strandgenomics.cube.dataset
             }
             return objectSortOrder;
         }
+
+        public override double GetDouble(int index)
+        {
+            return DatasetConstants.DOUBLE_MV;
+        }
+
+        public override decimal GetDecimal(int index)
+        {
+            return DatasetConstants.DECIMAL_MV;
+        }
     }
 }

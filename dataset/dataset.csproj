@@ -92,9 +92,11 @@
     <Compile Include="com\strandgenomics\cube\dataset\InvalidDataset.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\MultisetColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\MutableColumn.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\MutableDataset.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\NullColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ObjectColumn.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\ProxyColumn.cs" />
+    <Compile Include="com\strandgenomics\cube\dataset\SummarizeDataset.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\util\ColumnConverter.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\util\PreviewXLSParser.cs" />
     <Compile Include="com\strandgenomics\cube\dataset\util\TextParser.cs" />

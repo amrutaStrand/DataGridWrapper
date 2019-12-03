@@ -53,6 +53,18 @@ namespace com.strandgenomics.cube.dataset
             return master.GetFloat(index);
         }
 
+        override public double GetDouble(int index)
+        {
+            index = GetMasterIndex(index);
+            return master.GetDouble(index);
+        }
+
+        override public decimal GetDecimal(int index)
+        {
+            index = GetMasterIndex(index);
+            return master.GetDecimal(index);
+        }
+
         override public Object Get(int index)
         {
             index = GetMasterIndex(index);

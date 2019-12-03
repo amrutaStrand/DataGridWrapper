@@ -14,8 +14,8 @@ namespace com.strandgenomics.cube.dataset
        
         public event ColumnChangedEventHandler ColumnChanged;
 
-        //fireColumnEvent name changed to NotifyColumnChanged.
-        protected void NotifyColumnChanged(ColumnChangedEventArgs e)
+        
+        protected void FireColumnChanged(ColumnChangedEventArgs e)
         {
             ColumnChanged?.Invoke(this, e);
         }
@@ -32,7 +32,7 @@ namespace com.strandgenomics.cube.dataset
         //Need to figure out what to do when column data has changed.
         public void ColumnChangedHandler(object sender, ColumnChangedEventArgs e)
         {
-            
+            //does nothing for now
         }
 
         protected bool CompareData(IColumn c)
@@ -127,7 +127,7 @@ namespace com.strandgenomics.cube.dataset
             e.Column = this;
             try
             {
-                NotifyColumnChanged(e);
+                FireColumnChanged(e);
             }
             catch (DataException)
             {
@@ -152,7 +152,7 @@ namespace com.strandgenomics.cube.dataset
             e.NewName = newName;
 
             
-            NotifyColumnChanged(e);
+            FireColumnChanged(e);
             SetName0(e.NewName);
             if(e.Cancelled)
             {
@@ -163,5 +163,21 @@ namespace com.strandgenomics.cube.dataset
 
 
         }
+
+        public void AddColumnListener(IColumnChanged o)
+        {
+            o.ColumnChanged += ColumnChangedHandler;
+        }
+
+        public void RemoveColumnListener(IColumnChanged o)
+        {
+            o.ColumnChanged -= ColumnChangedHandler;
+        }
+
+        public abstract double GetDouble(int index);
+
+
+        public abstract decimal GetDecimal(int index);
+       
     }
 }

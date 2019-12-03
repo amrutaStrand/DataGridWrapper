@@ -61,6 +61,29 @@ namespace com.strandgenomics.cube.dataset
         /// <returns></returns>
         float GetFloat(int index);
 
+
+        /// <summary>
+        ///  returns the double value at specified index
+        /// </summary>
+        /// <exception cref="DataException">Thrown when <paramref name="index">
+        /// is <c>null</c></exception>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        double GetDouble(int index);
+
+
+        /// <summary>
+        ///  returns the decimal value at specified index
+        /// </summary>
+        /// <exception cref="DataException">Thrown when <paramref name="index">
+        /// is <c>null</c></exception>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        decimal GetDecimal(int index);
+
+
+
+
         /// <summary>
         /// returns an object representing column value
         /// </summary>
@@ -242,14 +265,14 @@ namespace com.strandgenomics.cube.dataset
         /// column change events.
         /// </summary>
         /// <param name="l"></param>
-        void AddColumnListener();
+        void AddColumnListener(IColumnChanged o);
 
         /// <summary>
         ///  Removes a column listener from this column. This method 
         ///  is for internal use only.
         /// </summary>
         /// <param name="l"></param>
-        void RemoveColumnListener();
+        void RemoveColumnListener(IColumnChanged o);
 
     }
 }

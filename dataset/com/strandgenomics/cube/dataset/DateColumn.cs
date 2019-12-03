@@ -102,5 +102,21 @@ namespace com.strandgenomics.cube.dataset
             else
                 return GetFloat(index);
         }
+
+        public override double GetDouble(int index)
+        {
+            if (IsMissingValue(index))
+                return DatasetConstants.DOUBLE_MV;
+            else
+                return (double)data[index];
+        }
+
+        public override decimal GetDecimal(int index)
+        {
+            if (IsMissingValue(index))
+                return DatasetConstants.DECIMAL_MV;
+            else
+                return (decimal)data[index];
+        }
     }
 }

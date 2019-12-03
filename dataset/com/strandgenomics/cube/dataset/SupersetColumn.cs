@@ -138,7 +138,7 @@ namespace com.strandgenomics.cube.dataset
         public override float GetFloat(int index)
         {
             string datatype = GetDatatype();
-            if (datatype.Equals("integer") || !IsCategorical())
+            if (datatype.Equals("float") || !IsCategorical())
             {
                 int dataIndex = GetDataIndex(index);
                 if (dataIndex != -1)
@@ -365,6 +365,36 @@ namespace com.strandgenomics.cube.dataset
         private void InvalidMethodException()
         {
             throw new DataException("Method invoked on the column is not compatible with its state. Categorical column = " + IsCategorical());
+        }
+
+        public override double GetDouble(int index)
+        {
+            string datatype = GetDatatype();
+            if (datatype.Equals("double") || !IsCategorical())
+            {
+                int dataIndex = GetDataIndex(index);
+                if (dataIndex != -1)
+                    return orgColumn.GetDouble(dataIndex);
+                else
+                    return missingValue;
+            }
+            else
+                return GetCategoryIndex(index);
+        }
+
+        public override decimal GetDecimal(int index)
+        {
+            string datatype = GetDatatype();
+            if (datatype.Equals("decimal") || !IsCategorical())
+            {
+                int dataIndex = GetDataIndex(index);
+                if (dataIndex != -1)
+                    return orgColumn.GetDecimal(dataIndex);
+                else
+                    return (decimal)missingValue;
+            }
+            else
+                return GetCategoryIndex(index);
         }
     }
 }

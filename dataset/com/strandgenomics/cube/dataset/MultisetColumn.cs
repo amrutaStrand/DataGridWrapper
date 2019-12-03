@@ -62,5 +62,6 @@ namespace com.strandgenomics.cube.dataset
             return master.GetCategoryCount();
             //throw new RuntimeException("NYI");
         }
+
     }
 }
