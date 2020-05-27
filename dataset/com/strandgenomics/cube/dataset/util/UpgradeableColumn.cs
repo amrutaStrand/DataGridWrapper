@@ -158,6 +158,8 @@ namespace com.strandgenomics.cube.dataset.util
             }
 
             return c;
+
+
         }
 
         private object GetDataType(string tok)
